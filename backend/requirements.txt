@@ -1,0 +1,5 @@
+flask==2.3.3
+flask-socketio==5.3.5
+flask-cors==4.0.0
+pillow==10.0.1
+python-socketio==5.8.0
