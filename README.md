@@ -1,6 +1,13 @@
 # ESP32-CAM Detection System - مبسط
 ![image](images/system.jpg)
-نظام كشف الأشخاص باستخدام ESP32-CAM مع واجهة ويب جميلة.
+
+# CESP32-CAM with real time stream and object detection
+
+![image](images/cam.jpg)
+
+#Exemple for object detection
+
+![image](images/system2.jpg)
 
 ## 🚀 تشغيل سريع
 
