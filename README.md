@@ -3,7 +3,7 @@
 
 # CESP32-CAM with real time stream and object detection
 
-![image](images/cam.jpg)
+![image](images/cam_.jpg)
 
 #Exemple for object detection
 
