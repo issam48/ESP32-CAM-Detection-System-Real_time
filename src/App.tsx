@@ -10,15 +10,24 @@ import { detectionService } from './services/detectionService';
 function App() {
   const { isConnected, lastFrame, error, stats } = useWebSocket('http://localhost:5000');
   const { detections, loading, error: historyError, refresh } = useDetectionHistory();
+  const [localDetections, setLocalDetections] = React.useState<ReturnType<typeof useDetectionHistory>["detections"]>([]);
+
+  React.useEffect(() => {
+    setLocalDetections(detections);
+  }, [detections]);
 
   const handleDeleteDetection = async (id: number) => {
+    // Optimistic UI: احذف العنصر مباشرة من الواجهة
+    setLocalDetections(prev => prev.filter(d => d.id !== id));
     try {
       await detectionService.deleteDetection(id);
-      refresh();
+      // لا تستدعي refresh هنا، WebSocket سيجلب البيانات تلقائياً
     } catch (err) {
       console.error('Error deleting detection:', err);
+      // في حالة الخطأ يمكنك إعادة العنصر أو إظهار رسالة للمستخدم
     }
   };
+
 
   const currentPersonCount = lastFrame?.personCount || 0;
 
@@ -67,7 +76,7 @@ function App() {
 
         {/* Detection History */}
         <DetectionHistory
-          detections={detections}
+          detections={localDetections}
           loading={loading}
           error={historyError}
           onRefresh={refresh}

@@ -22,18 +22,28 @@ export const useDetectionHistory = () => {
     }
   };
 
-  const { stats } = useWebSocket('http://localhost:5000');
+  const { stats, isConnected, lastFrame } = useWebSocket('http://localhost:5000');
 
   useEffect(() => {
     fetchDetections();
   }, []);
 
-  // تحديث عند تغير stats (أي بث WebSocket)
+  // تحديث realtime عند استقبال أي بث WebSocket (stats أو كشف جديد)
+  useEffect(() => {
+    if (isConnected) {
+      fetchDetections();
+    }
+  }, [isConnected]);
   useEffect(() => {
     if (stats) {
       fetchDetections();
     }
   }, [stats]);
+  useEffect(() => {
+    if (lastFrame) {
+      fetchDetections();
+    }
+  }, [lastFrame]);
 
 
 
