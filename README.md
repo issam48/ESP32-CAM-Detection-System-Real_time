@@ -26,9 +26,9 @@ An interactive web interface for viewing live object detection results
 
 ![image](images/system2.jpg)
 
-## 🚀 تشغيل سريع
+## run Project
 
-### 1. تشغيل الباكند (Flask Server)
+### 1. Flask Server
 
 ```bash
 cd backend
@@ -36,31 +36,31 @@ pip install flask flask-socketio flask-cors pillow
 python app.py
 ```
 
-### 2. تشغيل الفرونت إند (React)
+### 2. React
 
 ```bash
 npm install
 npm run dev
 ```
 
-### 3. برمجة ESP32-CAM
+### 3.  ESP32-CAM
 
 1. افتح `esp32_cam/esp32_cam.ino` في Arduino IDE
 2. غيّر إعدادات الشبكة:
    ```cpp
-   const char* ssid = "اسم_شبكتك";
-   const char* password = "كلمة_المرور";
-   const char* server_host = "192.168.1.100"; // IP جهازك
+   const char* ssid = "name of wifi";
+   const char* password = "password of wifi";
+   const char* server_host = "192.168.1.100"; // your server IP address
    ```
-3. ارفع الكود للـ ESP32-CAM
+3. Run code  ESP32-CAM
 
 ## 📁 هيكل المشروع
 
 ```
 ├── src/                    # React Frontend
 ├── backend/
-│   ├── app.py             # Flask Server (مبسط)
-│   └── requirements.txt   # مكتبات Python
+│   ├── app.py             # Flask Server 
+│   └── requirements.txt   # Python
 └── esp32_cam/
-    └── esp32_cam.ino      # كود ESP32-CAM (مبسط)
+    └── esp32_cam.ino      #  ESP32-CAM 
 ```
